@@ -129,3 +129,5 @@ dmypy.json
 .pyre/
 imgui.ini
 test*
+.DS_Store
+*results

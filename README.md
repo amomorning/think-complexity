@@ -6,10 +6,10 @@ Taichi implementation for book Think Complexity
 
 - [x] ER Graph
 - [x] WS Graph
-- [ ] Cellular Automaton
-- [ ] Game of Life
-- [ ] Sandpile
-- [ ] Diffusion-reaction (via CA)
+- [x] Cellular Automaton
+- [x] Game of Life
+- [x] Reaction Diffusion
+- [ ] Sand Piles
 - [ ] Schelling
 - [ ] Sugarscape
 - [x] Boids
