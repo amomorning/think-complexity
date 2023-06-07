@@ -4,15 +4,15 @@ Taichi implementation for book Think Complexity
 
 ## TODO
 
-- [ ] ER Graph
-- [ ] WS Graph
+- [x] ER Graph
+- [x] WS Graph
 - [ ] Cellular Automaton
 - [ ] Game of Life
 - [ ] Sandpile
 - [ ] Diffusion-reaction (via CA)
 - [ ] Schelling
 - [ ] Sugarscape
-- [ ] Boids
+- [x] Boids
 - [ ] Mutant
 - [ ] Prisoner's dilemma
 
