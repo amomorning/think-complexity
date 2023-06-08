@@ -20,7 +20,7 @@ gui = ti.GUI("CA pixels", (img_size, img_size))
 def rule(type: int) -> int:
     ret = 0
     for i in ti.static(range(len(ruleset))):
-        if(i == 7-type):
+        if(i == len(ruleset)-type):
             ret = ruleset[i]
         
     return ret

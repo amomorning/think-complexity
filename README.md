@@ -16,6 +16,6 @@ Taichi implementation for book Think Complexity
 - [ ] Mutant
 - [ ] Prisoner's dilemma
 
-## Reference
+## Referenc
 
 - [Book and Code for Think Complexity](https://github.com/AllenDowney/ThinkComplexity2)
