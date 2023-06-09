@@ -8,12 +8,11 @@ cell = ti.field(int, shape=(res, res))
 gui = ti.GUI('Schelling', res*cell_size)
 
 
-prob = [0, 0.07, 0.38, 0.69]
+prob = [0, 0.1, 0.4, 0.7]
 color = [ti.Vector([0.95, 0.95, 0.93]), ti.Vector([0.61, 0.69, 0.79]), ti.Vector([0.91, 0.84, 0.39]), ti.Vector([0.91, 0.66, 0.38])]
 
 num = int(res*res*prob[1])
 indices = ti.Vector.field(2, int, shape=(num, ))
-print(num)
 
 @ti.kernel
 def init() -> int:
@@ -59,11 +58,13 @@ def run(p: float):
         if cell[i_, j_] == 3:
             pixels[i, j] = color[3]
 
+result_dir = "imgs/schelling-results"
+video_manager = ti.tools.VideoManager(output_dir=result_dir, framerate=24, automatic_build=True)
+
 # gui.fps_limit = 1
 pause = False
 t = 0
 num = init()
-print(num)
 while gui.running:
     for e in gui.get_events(gui.PRESS, gui.MOTION):
         if e.key == gui.ESCAPE:
@@ -74,8 +75,12 @@ while gui.running:
             num = init()
 
     if not pause:
-        run(0.55)
+        run(0.56)
 
+    video_manager.write_frame(pixels)
     gui.set_image(pixels)
     gui.show()
     t += 1
+video_manager.make_video(gif=True, mp4=True)
+
+

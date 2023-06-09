@@ -3,8 +3,8 @@ import numpy as np
 import taichi as ti
 ti.init(ti.gpu)
 
-kernel = np.array([[0, 1, 0], [1, -4, 1], [0, 1, 0]], dtype=np.int32)
-# kernel = np.array([[0, 1, 0], [2, -4, 1], [0, 0, 0]], dtype=np.int32)
+# kernel = np.array([[0, 1, 0], [1, -4, 1], [0, 1, 0]], dtype=np.int32)
+kernel = np.array([[0, 1, 0], [2, -4, 1], [0, 0, 0]], dtype=np.int32)
 N, M, K = 120, 120, 6
 MX, R = 30, 20
 sandpile_size = 6
