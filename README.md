@@ -9,8 +9,8 @@ Taichi implementation for book Think Complexity
 - [x] Cellular Automaton
 - [x] Game of Life
 - [x] Reaction Diffusion
-- [ ] Sand Piles
-- [ ] Schelling
+- [x] Sand Piles
+- [x] Schelling
 - [ ] Sugarscape
 - [x] Boids
 - [ ] Mutant
