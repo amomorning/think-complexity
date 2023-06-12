@@ -4,14 +4,16 @@ import random
 
 ti.init(ti.cpu, cpu_max_num_threads=1)
 
-cell_size = 10
-res = 50
+cell_size = 8
+res = 100
+r = ti.Vector([60, 40, 25, 15])
+r1, r2 = 30, 70
 pixels = ti.Vector.field(3, float, shape = (res*cell_size, res*cell_size))
 cell = ti.field(int, shape=(res, res))
 vis = ti.field(int, shape=(res, res))
 gui = ti.GUI('Sugarscape', res*cell_size)
 
-N = 100
+N = 400
 
 pos = ti.field(float, shape=(N, 2))
 dead = ti.field(int, shape=(N,))
@@ -23,14 +25,14 @@ agent = ti.Struct.field({
     "vision": int
 }, shape=(N,))
 d4 = ti.Matrix([[-1, 0], [0, -1], [1, 0], [0, 1]])
-r = ti.Vector([30, 19, 11, 7])
+
 
 @ti.kernel
 def init():
     cell.fill(0)
     for i, j in cell:
-        a = (i-15)*(i-15) + (j-15)*(j-15) 
-        b = (i-35)*(i-35) + (j-35)*(j-35) 
+        a = (i-r1)*(i-r1) + (j-r1)*(j-r1) 
+        b = (i-r2)*(i-r2) + (j-r2)*(j-r2) 
         for k in ti.static(range(4)):
             if min(a, b) < r[k] * r[k]:
                 cell[i, j] = k
@@ -82,8 +84,8 @@ def draw():
         pixels[i, j] = ti.Vector([1.0, 1.0, 1.0]) - ti.Vector([0.27, 0.76, 0.63]) * (cell[i_, j_]) / 5
 
     for i in range(N):
-        pos[i, 0] = (agent[i].x + 0.5)/res
-        pos[i, 1] = (agent[i].y + 0.5)/res
+        pos[i, 0] = (agent[i].x+0.46)/res
+        pos[i, 1] = (agent[i].y+0.46)/res
 
         dead[i] = ti.cast(agent[i].sugar < 0, int)
         
@@ -99,5 +101,5 @@ while gui.running:
             draw()
 
     gui.set_image(pixels)
-    gui.circles(pos.to_numpy(), (cell_size-1)//2, palette=[0x63B79D, 0xEAF1F2], palette_indices=dead)
+    gui.circles(pos.to_numpy(), (cell_size-1)/2, palette=[0x63B79D, 0xEAF1F2], palette_indices=dead)
     gui.show()
