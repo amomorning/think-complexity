@@ -59,7 +59,7 @@ def run(p: float):
             pixels[i, j] = color[3]
 
 result_dir = "imgs/schelling-results"
-video_manager = ti.tools.VideoManager(output_dir=result_dir, framerate=24, automatic_build=True)
+# video_manager = ti.tools.VideoManager(output_dir=result_dir, framerate=24, automatic_build=True)
 
 # gui.fps_limit = 1
 pause = False
@@ -77,10 +77,10 @@ while gui.running:
     if not pause:
         run(0.56)
 
-    video_manager.write_frame(pixels)
+    # video_manager.write_frame(pixels)
     gui.set_image(pixels)
     gui.show()
     t += 1
-video_manager.make_video(gif=True, mp4=True)
+# video_manager.make_video(gif=True, mp4=True)
 
 

@@ -11,7 +11,7 @@ Taichi implementation for book Think Complexity
 - [x] Reaction Diffusion
 - [x] Sand Piles
 - [x] Schelling
-- [ ] Sugarscape
+- [x] Sugarscape
 - [x] Boids
 - [ ] Mutant
 - [ ] Prisoner's dilemma
