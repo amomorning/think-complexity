@@ -60,6 +60,8 @@ def add(a: ti.template(), b: ti.template()):
         j_ = j // sandpile_size
         pixels[i, j] = ti.Vector([0.75, 0.78, 0.81]) * a[i_, j_] / K
     
+result_dir = "imgs/sandpile-results"
+video_manager = ti.tools.VideoManager(output_dir=result_dir, framerate=24, automatic_build=True)
 
 def run():
     tot = 0
@@ -79,8 +81,12 @@ def run():
             correlate(out, toppling, kernel0, 0)
             add(sandpile, out)
             tot += num
+        else:
+            break
+        video_manager.write_frame(pixels)
 
         gui.set_image(pixels)
         gui.show()
         
 run()
+video_manager.make_video(gif=True, mp4=True)

@@ -156,7 +156,9 @@ class World:
             scene.mesh(boid.vs, fs, color = (0.28, 0.68, 0.99))
         scene.particles(self.carrot.vs, radius = 0.1, color = (0.95, 0.43, 0.22))
  
-    
+result_dir = "imgs/boids-results"
+video_manager = ti.tools.VideoManager(output_dir=result_dir, framerate=24, automatic_build=True)
+
 
 if __name__ == '__main__':
 
@@ -180,4 +182,6 @@ if __name__ == '__main__':
 
         canvas.scene(scene)
         if show_window:
+            video_manager.write_frame(window.get_image_buffer_as_numpy())
             window.show()
+

@@ -89,8 +89,11 @@ def draw():
 
         dead[i] = ti.cast(agent[i].sugar < 0, int)
         
+result_dir = "imgs/sugarscape-results"
+video_manager = ti.tools.VideoManager(output_dir=result_dir, framerate=5, automatic_build=False)
 init()
 draw()
+t = 0
 while gui.running:
     for e in gui.get_events(gui.PRESS, gui.MOTION):
         if e.key == 'r':
@@ -102,4 +105,13 @@ while gui.running:
 
     gui.set_image(pixels)
     gui.circles(pos.to_numpy(), (cell_size-1)/2, palette=[0x63B79D, 0xEAF1F2], palette_indices=dead)
+    video_manager.write_frame(gui.get_image())
     gui.show()
+
+    if t <= 200:
+        step()
+        draw()
+        t += 1
+    else:
+        break
+video_manager.make_video(gif=True, mp4=True)
