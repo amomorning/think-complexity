@@ -13,8 +13,8 @@ Taichi implementation for book Think Complexity
 - [x] Schelling
 - [x] Sugarscape
 - [x] Boids
-- [ ] Mutant
-- [ ] Prisoner's dilemma
+- [x] Mutant
+- [x] Prisoner's dilemma
 
 ## Graph
 
@@ -60,12 +60,10 @@ Taichi implementation for book Think Complexity
 
 NK model is a mathematical model by Stuart Kauffman has tunable rugedness. It caputres the intuition over the size of landscapes, can be adjusted via 2 parameters $N$ and $K$, with $N$ being the length of a string of evolution and $K$ the level of landscape ruggedness.
 
-The function maps from genotype to fitness is called **fitness landscape**. It presents how the **phenotype**, physical form of genotype, interacts with its **environment**. 
+The function maps from genotype to fitness is called **fitness landscape**. It presents how the **phenotype**, physical form of genotype, interacts with its **environment**.
 
 - NP-complete problem
 - Open-ended evolution
-
-#### Results
 
 #### Papers
 
